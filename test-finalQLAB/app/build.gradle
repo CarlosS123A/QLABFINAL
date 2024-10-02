@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.9.6'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.appium:java-client:7.6.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    implementation 'io.cucumber:cucumber-java:6.11.0'
+    implementation 'io.cucumber:cucumber-testng:6.11.0'
+    implementation 'org.testng:testng:7.4.0'
+    implementation 'io.qameta.allure:allure-cucumber6-jvm:2.17.3'
+    
+    testImplementation 'io.cucumber:cucumber-picocontainer:6.11.0'
+}
+
+test {
+    useTestNG()
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+}
+
+allure {
+    version = '2.17.3'
+    useTestNG {
+        version = '2.17.3'
+    }
+}
